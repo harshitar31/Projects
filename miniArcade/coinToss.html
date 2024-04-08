@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Coin Toss </title>
+</head>
+<style>
+    p,b {
+        font-family: Verdana, Tahoma, sans-serif;
+        color: rgb(142, 196, 158);
+    }
+    button {
+      font-family: Verdana, Tahoma, sans-serif;
+        color:  rgb(35, 62, 43);
+    }
+</style>
+<body background="https://img.freepik.com/premium-photo/dark-cyan-old-cement-plaster-wall-with-crack-grunge-texture-background_150101-1733.jpg">
+    <script>
+        function tossCoin() {
+            return Math.random() < 0.5 ? 0:1
+        }
+        var ans = tossCoin();
+
+        function clickHead() {
+            if (ans==1) {
+                var op = document.getElementById("message");
+                op.textContent = "YOU WON!"; 
+                const op1 = document.getElementById("coin");
+                op1.src="https://images.vexels.com/media/users/3/264554/isolated/lists/97fc3dfee9a826c1f56a2c09e0b54855-coin-illustration-nickel-head-usa.png";
+            }
+            else {
+                var op = document.getElementById("message");
+                op.textContent = "YOU LOST"; 
+                const op1 = document.getElementById("coin");
+                op1.src="https://images.vexels.com/media/users/3/264553/isolated/preview/5add76855e76727a31f18ba44445b442-coin-illustration-usa-one-cent.png";
+            }
+        }
+
+        function clickTail() {
+            if (ans==0) {
+                var op = document.getElementById("message");
+                op.textContent = "YOU WON!"; 
+                const op1 = document.getElementById("coin");
+                op1.src="https://images.vexels.com/media/users/3/264553/isolated/preview/5add76855e76727a31f18ba44445b442-coin-illustration-usa-one-cent.png";
+            }
+            else {
+                var op = document.getElementById("message");
+                op.textContent = "YOU LOST";
+                const op1 = document.getElementById("coin");
+                op1.src="https://images.vexels.com/media/users/3/264554/isolated/lists/97fc3dfee9a826c1f56a2c09e0b54855-coin-illustration-nickel-head-usa.png"; 
+            }
+        }
+    </script>
+   <center>
+    <b> COIN TOSS </b>
+    <p style="font-size: 12px;"> Don't be a flip-flopper, choose your side wisely! This game is a real coinundrum.  </p>
+        <button onclick="clickHead()"> Heads </button>  &nbsp;&nbsp; 
+        <button onclick="clickTail()"> Tails </button>
+        <br>
+        <b> <p id="message">  </p> </b>
+        <img src="https://pngimg.com/d/question_mark_PNG42.png" id="coin" height="70" width="70">
+        <br> <br>
+        <button onclick="location.reload()"> Play Again </button>
+   </center> 
+</body>
+</html>

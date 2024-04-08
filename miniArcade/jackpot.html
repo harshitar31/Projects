@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Jackpot </title>
+</head>
+<style>
+    p,b,div {
+        font-family: Verdana, Tahoma, sans-serif;
+        color: rgb(142, 196, 158);
+    }
+    button {
+        font-family: Verdana, Tahoma, sans-serif;
+        color:  rgb(35, 62, 43);
+    }
+    .spin-image {
+        animation: spin 2s infinite linear; /* Animation properties */
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); } /* Start from 0 degrees */
+        to { transform: rotate(360deg); } /* Rotate to 360 degrees */
+    }
+</style>
+<body background="https://img.freepik.com/premium-photo/green-clean-wool-texture-background-light-natural-sheep-wool-serge-seamless-cotton-texture-fluffy-fur-designers-close-up-fragment-green-flannel-haircloth-carpet-broadclothx9_661047-5681.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1712448000&semt=ais">
+    <script>
+        function jackpot() {
+            event.preventDefault();
+            var a = Math.floor(Math.random()*10);
+            var b = Math.floor(Math.random()*10);
+            var c = Math.floor(Math.random()*10);
+            var v1 = document.getElementById("v1");
+            v1.textContent = a;
+            var v2 = document.getElementById("v2");
+            v2.textContent = b;
+            var v3 = document.getElementById("v3");
+            v3.textContent = c;
+            var message = document.getElementById("message");
+            if ((a==7) && (b==7) && (c==7) ) {
+                message.textContent = "LUCKY, YOU WON!";
+            }
+            else {
+                message.textContent = "BETTER LUCK NEXT TIME";
+            }
+            var spin = document.getElementById("spin");
+            spin.style.animationPlayState = "paused";
+        }
+    </script>
+    <center>
+        <b> JACKPOT </b>
+        <p style="font-size: 12px;">  Aim for the ultimate triple seven </p>
+        
+        <img id="spin" class="spin-image" src="https://png.pngtree.com/png-vector/20230220/ourmid/pngtree-spin-wheel-vector-illustration-png-image_6606505.png" height="80" width="80">
+        <br>
+        <button onclick="jackpot()"> Stop </button>
+        <br> <br>
+        <div style="font-size: 13px;">
+            <b id="v1">  </b> &nbsp; <b id="v2">  </b> &nbsp; <b id="v3">  </b>
+        </div>
+        <b>
+            <p style="font-size: 13px;" id="message"> </p>    
+        </b>
+        <button onclick="location.reload()"> Play Again </button>
+ 
+    </center>
+
+</body>
+</html>

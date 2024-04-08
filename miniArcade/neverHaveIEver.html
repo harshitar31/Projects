@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Never Have I Ever? </title>
+</head>
+<style>
+    p,b {
+        font-family: Verdana, Tahoma, sans-serif;
+        color: rgb(142, 196, 158);
+    }
+    button {
+      font-family: Verdana, Tahoma, sans-serif;
+        color:  rgb(35, 62, 43);
+    }
+</style>
+<body background="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMTgtYmVlci0wNC5qcGc.jpg">
+    <center>
+        <b> Never Have I Ever? </b>
+        <p style="font-size: 12px;"> Get ready to spill the tea! </p>
+        
+        <p id="question">
+
+        </p>
+        <button id="op1" onclick="respOp1()"> I have </button> &nbsp; &nbsp; &nbsp;
+        <button id="op2" onclick="respOp2()"> I've never </button><br>
+        <p id="response"> 
+
+        </p>
+        
+        <button onclick="location.reload()"> Play Again </button>
+    
+    </center>
+    <script>
+        const questions = [
+  "Never have I ever fallen asleep during a lecture.",
+  "Never have I ever pretended to be sick to avoid school or work.",
+  "Never have I ever accidentally sent a text message to the wrong person.",
+  "Never have I ever broken a bone.",
+  "Never have I ever dyed my hair an unconventional color.",
+  "Never have I ever talked in my sleep.",
+  "Never have I ever eaten something I shouldn't have and regretted it later.",
+  "Never have I ever sung karaoke in public.",
+  "Never have I ever been on a blind date.",
+  "Never have I ever wished I could be invisible.",
+];
+
+
+const responses = [
+  // Question 1: Fallen Asleep During Lecture
+  ["Been there, done that. Those lectures can be snoozy!", "Wow, you have amazing focus! I'm always tempted to catch some Zzzs in class."],
+  // Question 2: Pretended to be Sick
+  ["Guilty as charged! Sometimes you just need a mental health day.", "You're a trooper! Pushing through even when you don't feel well is admirable."],
+  // Question 3: Sent Wrong Text Message
+  ["Oh no, the struggle is real! Who was the unlucky recipient?", "You're lucky! I've definitely sent a few embarrassing texts in my day."],
+  // Question 4: Broken a Bone
+  ["Ouch! That sounds painful. How'd it happen?", "Lucky duck!"],
+  // Question 5: Dyed Hair Unconventional Color
+  ["Whoa, that sounds bold! What color did you choose?", "Natural hair is beautiful too. But hey, if you're happy, that's all that matters."],
+  // Question 6: Talked in My Sleep
+  ["Haha, that's classic! Do you remember what you said?", "Sweet dreams! I can barely remember my dreams, let alone talk in them."],
+  // Question 7: Eaten Something I Regretted
+  ["We've all been there! What was the culprit?", "You have great self-control! I sometimes indulge in a little too much dessert."],
+  // Question 8: Sung Karaoke in Public
+  ["Belting out those tunes, I love it! What's your go-to karaoke song?", "Maybe next time! Karaoke can be a lot of fun, even if you're not a pro."],
+  // Question 9: Been on a Blind Date
+  ["Sounds exciting! How did it go?", "Sticking to familiar territory is cool too. There's something to be said about comfort."],
+  // Question 10: Wished to be Invisible
+  ["We all have our moments! What would you do if you were invisible?", "Being seen can be a good thing! But sometimes you just want to blend in."],
+];
+            var qno = Math.floor(Math.random()*10);
+            var q = questions[qno];
+ 
+        function nhie() {
+            var question = document.getElementById("question");
+            question.textContent = q;
+ 
+        }
+
+        function respOp1() {
+            var r = responses[qno][0];
+            var response = document.getElementById("response");
+            response.textContent = r;
+        }
+        function respOp2() {
+            var r = responses[qno][1];
+            var response = document.getElementById("response");
+            response.textContent = r;
+        }
+
+        nhie()
+
+    </script>
+
+</body>
+</html>

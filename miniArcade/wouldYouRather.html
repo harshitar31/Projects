@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Would you Rather? </title>
+</head>
+<style>
+    p,b {
+        font-family: Verdana, Tahoma, sans-serif;
+        color: rgb(142, 196, 158);
+    }
+    button {
+      font-family: Verdana, Tahoma, sans-serif;
+        color:  rgb(35, 62, 43);
+    }
+</style>
+<body background="https://t4.ftcdn.net/jpg/01/19/33/15/360_F_119331590_h930yVME35SZzNw4L8GF4cS9gasaLd7t.jpg">
+    <center>
+        <b> WOULD YOU RATHER </b>
+        <p style="font-size: 12px;"> Unleash your inner "what if" </p>
+        
+        <p id="question">
+
+        </p>
+        <button id="op1" onclick="respOp1()"></button> &nbsp; &nbsp; &nbsp;
+        <button id="op2" onclick="respOp2()"></button><br>
+        <p id="response"> 
+
+        </p>
+        
+        <button onclick="location.reload()"> Play Again </button>
+    
+    </center>
+    <script>
+        const questions = ["Would you rather be able to fly or breathe underwater?",
+        "Would you rather be invisible or be able to read minds?",
+        "Would you rather have the ability to teleport anywhere or travel at the speed of sound?",
+        "Would you rather win the lottery or have your dream job?",
+        "Would you rather be able to speak to animals or control the weather?",
+        "Would you rather always be cold or always be hot?",
+        "Would you rather be able to time travel to the past or the future?", 
+        "Would you rather have super strength or super speed?",
+        "Would you rather be able to speak any language or be a musical prodigy?",
+        "Would you rather live forever or have one extra year of life for every good deed you do?"];
+
+        const options = [["Fly", "Breathe underwater"],
+        ["Invisible", "Read minds"],
+        ["Teleport anywhere", "Travel at the speed of sound"],
+        ["Win the lottery", "Have your dream job"],
+        ["Speak to animals", "Control the weather"],
+        ["Always cold", "Always hot"],
+        ["Travel to the past", "Travel to the future"],
+        ["Super strength", "Super speed"],
+        ["Speak any language", "Be a musical prodigy"],
+        ["Live forever", "Extra year for good deeds"]];
+
+        const reponses = [
+  [ // Question 1: Fly or Breathe Underwater
+    "Soaring through the clouds like a superhero! Just watch out for birds and airplanes.",
+    "Exploring the vast underwater world! Remember, dolphins are always welcome company."
+  ],
+  [ // Question 2: Invisible or Read Minds
+    "Sneaking around unseen? Sounds like a spy's dream come true!",
+    "Reading minds? You could be the ultimate negotiator, but beware of emotional overload!"
+  ],
+  [ // Question 3: Teleport Anywhere or Travel at Speed of Sound
+    "Teleporting anywhere instantly? No more traffic jams or airport security! But be careful where you aim.",
+    "Traveling at the speed of sound? Feel the adrenaline rush as you break the sound barrier!"
+  ],
+  [ // Question 4: Win Lottery or Dream Job
+    "Instant financial freedom! But remember, money doesn't buy happiness. Invest wisely!",
+    "Having your dream job brings fulfillment and purpose. But remember, dreams sometimes require hard work."
+  ],
+  [ // Question 5: Speak to Animals or Control Weather
+    "Talking to animals! Imagine the secrets they could share! Just don't expect them to answer all your questions.",
+    "Controlling the weather? Be your own weatherman! But remember, with great power comes great responsibility."
+  ],
+  [ // Question 6: Always Cold or Always Hot
+    "Brrr...always cold might require a lot of sweaters, but at least you'll never get sweaty.",
+    "Feeling the heat constantly? Time to stock up on sunscreen and find some cool getaways!"
+  ],
+  [ // Question 7: Travel to Past or Future
+    "Traveling to the past? Change history or relive a special moment?",
+    "Traveling to the future? See what the world holds! But remember, the future is always uncertain."
+  ],
+  [ // Question 8: Super Strength or Super Speed
+    "Super strength! Become the ultimate hero and lift anything! But remember, with great strength comes great responsibility to help others.",
+    "Super speed! The world is your oyster! But remember, moving that fast might make it hard to appreciate the scenery."
+  ],
+  [ // Question 9: Speak Any Language or Musical Prodigy
+    "Speaking any language? Break down communication barriers and travel the world with ease!",
+    "Becoming a musical prodigy? Share your gift with the world and create beautiful melodies!"
+  ],
+  [ // Question 10: Live Forever or Extra Year for Good Deeds
+    "Living forever? Witness the future and see how the world evolves! But remember, even forever can get lonely.",
+    "Extra year for good deeds? Live a meaningful life and make a positive impact. Every good deed matters!"
+  ]
+];
+            var qno = Math.floor(Math.random()*10);
+            var q = questions[qno];
+            var o1 = options[qno][0];
+            var o2 = options[qno][1];
+        function wyr() {
+            var question = document.getElementById("question");
+            question.textContent = q;
+            var op1 = document.getElementById("op1");
+            op1.textContent =  o1;
+            var op2 = document.getElementById("op2");
+            op2.textContent =  o2;
+        }
+
+        function respOp1() {
+            var r = reponses[qno][0];
+            var response = document.getElementById("response");
+            response.textContent = r;
+        }
+        function respOp2() {
+            var r = reponses[qno][1];
+            var response = document.getElementById("response");
+            response.textContent = r;
+        }
+
+        wyr()
+
+    </script>
+
+</body>
+</html>

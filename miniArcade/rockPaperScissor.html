@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Rock, Paper, Scissors </title>
+</head>
+<style>
+    p,b {
+        font-family: Verdana, Tahoma, sans-serif;
+        color: rgb(142, 196, 158);
+    }
+</style>
+<body background="https://img.freepik.com/premium-vector/abstract-paper-style-background_23-2150744369.jpg">
+    <center>
+        <b> Rock, Paper, Scissor </b>
+        <p style="font-size: 12px;"> Feeling a little rocky about your chances? Don't worry, paper covers all your bases! </p>
+        <br>
+
+        <button id="rock" onclick="orock()"> <img src="https://clipart-library.com/img/1603226.png" height="50" width="50"> </button> &nbsp; &nbsp; 
+        <button id="paper" onclick="opaper()"> <img src="https://static.vecteezy.com/system/resources/previews/010/792/121/non_2x/text-box-cartoon-free-png.png" height="50" width="50"> </button>&nbsp; &nbsp;
+        <button id="scissor" onclick="oscissor()"> <img src="https://clipart-library.com/images/qTBMrgzT5.png" height="50" width="50"> </button>
+        <br>
+        <b>
+            <p id="response"> </p>
+        </b>
+        <br>
+        <button onclick="location.reload()"> Play Again </button>
+    
+    </center>
+    <script>
+        var compOpt = Math.floor(Math.random()*3 + 1);
+        var message;
+        function orock() {
+            if (compOpt=="1") {
+                message = "YOU WON!"
+            }
+            else if (compOpt=="3") {
+                message = "DRAW";
+            }
+            else {
+                message = "YOU LOST";
+            }
+            var response = document.getElementById("response");
+            response.textContent = message;
+        }
+        function opaper() {
+            if (compOpt=="2") {
+                message = "YOU WON!"
+            }
+            else if (compOpt=="1") {
+                message = "DRAW";
+            }
+            else {
+                message = "YOU LOST";
+            }
+            var response = document.getElementById("response");
+            response.textContent = message;
+        }
+        function oscissor() {
+            if (compOpt=="3") {
+                message = "YOU WON!"
+            }
+            else if (compOpt=="2") {
+                message = "DRAW";
+            }
+            else {
+                message = "YOU LOST";
+            }
+            var response = document.getElementById("response");
+            response.textContent = message;
+        }
+
+    </script>
+</body>
+</html>
