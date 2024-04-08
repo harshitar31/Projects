@@ -1,0 +1,22 @@
+Mini Arcade ️
+This is a fun and interactive mini-arcade website where you can play a variety of classic and quick games!
+
+Getting Started
+To run the Mini Arcade website, you will need a web browser.  The website uses HTML frames, so make sure your browser supports them (most modern browsers do).
+Download the files and folders for this project.
+Open the index.html file in your web browser.
+
+Games Included
+The Mini Arcade currently features the following games:
+Coin Toss: See if you can win the coin toss game.
+Number Wordle: Guess the hidden four-digit number.
+Would You Rather?: Answer silly "would you rather" questions.
+Rock Paper Scissors: Play the classic hand game against the computer.
+Never Have I Ever: Answer these "nhie" questions 
+Jackpot: Try your luck at a simple slot machine game.
+
+Disclaimer
+Please note: This is a basic implementation and may not handle all potential errors or exceptions.
+
+License
+This project is distributed under the MIT License: https://opensource.org/licenses/MIT.
