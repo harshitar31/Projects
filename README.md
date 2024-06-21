@@ -7,6 +7,7 @@ Each project will have its own subfolder within this repository.
 Subfolders will be named clearly to reflect the project's purpose.
 Individual project folders may also include their own README files with specific details and instructions.
 
+Disclaimer: I'm only a beginner
 Feel free to Browse the code and explore different projects.
 
 Thank you
