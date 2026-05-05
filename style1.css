@@ -1,0 +1,68 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    background-image : url(https://static.wikia.nocookie.net/geronimostilton/images/0/02/Cheesewallpaper.png/revision/latest?cb=20120220072530);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+}
+
+.card{
+    width: 300px;
+    height: 400px;
+    background: linear-gradient(to bottom right, #1a8a17, #175415); 
+    color: rgb(255, 255, 255);
+    font-size: 18px; 
+    justify-content: center; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card img{
+    max-width: 100%;
+    height: auto;
+}
+
+.card .hover-box{
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    opacity: 0;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease;
+    font-size: medium;
+    padding: 20px;
+}
+
+
+
+.card:hover .hover-box {
+    opacity: 1;
+}
+
