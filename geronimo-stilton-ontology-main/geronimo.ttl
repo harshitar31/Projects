@@ -1,0 +1,396 @@
+@prefix : <http://example.org/stilton#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@base <http://example.org/stilton#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/stilton#hasAunt
+:hasAunt rdf:type owl:ObjectProperty ;
+         rdfs:domain :Character ;
+         rdfs:range :Character ;
+         rdfs:comment "Relates a character to their aunt, who is the sister of one of the character's parents."@en .
+
+
+###  http://example.org/stilton#hasCousin
+:hasCousin rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:SymmetricProperty ;
+           rdfs:domain :Character ;
+           rdfs:range :Character ;
+           rdfs:comment "Represents a reciprocal family relationship between characters who are children of siblings (i.e., first cousins). This property is symmetric, meaning if Character A is a cousin of Character B, then Character B is also a cousin of Character A."@en .
+
+
+###  http://example.org/stilton#hasFriend
+:hasFriend rdf:type owl:ObjectProperty ,
+                    owl:SymmetricProperty ;
+           rdfs:domain :Character ;
+           rdfs:range :Character ;
+           rdfs:comment "Denotes a bidirectional friendship between two characters."@en .
+
+
+###  http://example.org/stilton#hasGrandParent
+:hasGrandParent rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Character ;
+                rdfs:range :Character ;
+                rdfs:comment "Relates a character to their grandparent, who is the parent of one of their parents."@en .
+
+
+###  http://example.org/stilton#hasMember
+:hasMember rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :memberOfGroup ;
+           rdfs:domain :Group ;
+           rdfs:range :Character ;
+           rdfs:comment "Indicates that a group contains the given character as a member."@en .
+
+
+###  http://example.org/stilton#hasNephew
+:hasNephew rdf:type owl:ObjectProperty ;
+           rdfs:domain :Character ;
+           rdfs:range :Character ;
+           rdfs:comment "Relates a character to a nephew, defined as the son of their sibling."@en .
+
+
+###  http://example.org/stilton#hasNiece
+:hasNiece rdf:type owl:ObjectProperty ;
+          rdfs:domain :Character ;
+          rdfs:range :Character ;
+          rdfs:comment "Relates a character to a niece, defined as the daughter of their sibling."@en .
+
+
+###  http://example.org/stilton#hasSibling
+:hasSibling rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty ;
+            rdfs:domain :Character ;
+            rdfs:range :Character ;
+            rdfs:comment "Denotes a sibling relationship between characters who share the same parents. This property is both symmetric and transitive."@en .
+
+
+###  http://example.org/stilton#hasUncle
+:hasUncle rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Character ;
+          rdfs:range :Character ;
+          rdfs:comment "Relates a character to their uncle, who is the brother of one of the character’s parents."@en .
+
+
+###  http://example.org/stilton#memberOfGroup
+:memberOfGroup rdf:type owl:ObjectProperty ;
+               rdfs:domain :Character ;
+               rdfs:range :Group ;
+               rdfs:comment "Relates a character to a group they belong to, such as a family unit, team, or organization."@en .
+
+
+###  https://schema.org/employee
+schema:employee rdf:type owl:ObjectProperty ;
+                rdfs:domain schema:Organization ;
+                rdfs:range :Character .
+
+
+###  https://schema.org/homeLocation
+schema:homeLocation rdf:type owl:ObjectProperty ;
+                    rdfs:range schema:Place .
+
+
+###  https://schema.org/worksFor
+schema:worksFor rdf:type owl:ObjectProperty ;
+                rdfs:domain :Character ;
+                rdfs:range schema:Organization .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:DatatypeProperty .
+
+
+###  https://schema.org/jobTitle
+schema:jobTitle rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/stilton#Character
+:Character rdf:type owl:Class ;
+           rdfs:subClassOf schema:Person ;
+           rdfs:comment "A fictional character from the Geronimo Stilton universe. Characters may have relationships such as family ties or friendships."@en .
+
+
+###  http://example.org/stilton#Dragon
+:Dragon rdf:type owl:Class ;
+        rdfs:subClassOf :Character ;
+        rdfs:comment "A class representing dragon characters in the Geronimo Stilton universe, typically mythical or magical in nature."@en ;
+        rdfs:label "Dragon"@en .
+
+
+###  http://example.org/stilton#Group
+:Group rdf:type owl:Class ;
+       rdfs:comment "A collection of characters who are part of an organized team, band, or family unit."@en ;
+       rdfs:label "Group"@en .
+
+
+###  https://schema.org/Organization
+schema:Organization rdf:type owl:Class .
+
+
+###  https://schema.org/Person
+schema:Person rdf:type owl:Class .
+
+
+###  https://schema.org/Place
+schema:Place rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/stilton#Beartina
+:Beartina rdf:type owl:NamedIndividual ,
+                   :Character ;
+          rdfs:label "Beartina"@en .
+
+
+###  http://example.org/stilton#Blossom
+:Blossom rdf:type owl:NamedIndividual ,
+                  :Character ;
+         :memberOfGroup :The_Secret_Alliance ;
+         rdfs:comment "Queen Blossom is the benevolent ruler of the Kingdom of Fairies. She rules alongside her husband George and daughter Princess Winglet. Blossom is known for her sense of justice and kindness toward all creatures of the Kingdom of Fantasy."@en ;
+         rdfs:label "Blossom"@en .
+
+
+###  http://example.org/stilton#Cackle
+:Cackle rdf:type owl:NamedIndividual ,
+                 :Character ;
+        rdfs:comment "Queen Cackle is the former Queen of the Witches before Wither replaced her in The Dragon of Fortune. It was said that she loathes all things that are happy, but in every story, the Knight Geronimo Stilton successfully foils her schemes."@en ;
+        rdfs:label "Cackle"@en .
+
+
+###  http://example.org/stilton#Clever
+:Clever rdf:type owl:NamedIndividual ,
+                 :Character ;
+        :memberOfGroup :The_Secret_Alliance ;
+        rdfs:comment "Clever Chameleon is the wisest member of the Lizard Population and serves as a spiritual guide and martial arts expert who only uses his abilities to protect the innocent."@en ;
+        rdfs:label "Clever"@en .
+
+
+###  http://example.org/stilton#Crowbar
+:Crowbar rdf:type owl:NamedIndividual ,
+                  :Character ;
+         rdfs:comment "Crowbar is a Dark Wizard who has the ability to transform into a Crow at his own will. He is Wither's husband and Flamelet's father."@en ;
+         rdfs:label "Crowbar"@en .
+
+
+###  http://example.org/stilton#Dragon_of_the_Rainbow
+:Dragon_of_the_Rainbow rdf:type owl:NamedIndividual ,
+                                :Dragon ;
+                       rdfs:comment "Dragon of the Rainbow is a huge golden coloured dragon. He is Geronimo's constant sidekick and is the faithful messenger of Blossom, Queen of the Fairies. He lives in Kingdom of the Fairies"@en ;
+                       rdfs:label "Dragon of the Rainbow"@en .
+
+
+###  http://example.org/stilton#George
+:George rdf:type owl:NamedIndividual ,
+                 :Character ;
+        rdfs:label "George"@en .
+
+
+###  http://example.org/stilton#HerculePoirat
+:HerculePoirat rdf:type owl:NamedIndividual ,
+                        :Character ;
+               rdfs:comment "Hercule Poirat is a private detective and a friend of Geronimo Stilton. His name is a pun on the famous detective Hercule Poirot."@en ;
+               rdfs:label "Hercule Poirat"@en .
+
+
+###  http://example.org/stilton#Lady_of_Dreams
+:Lady_of_Dreams rdf:type owl:NamedIndividual ,
+                         :Character ;
+                :memberOfGroup :The_Secret_Alliance ;
+                rdfs:comment "The Lady of Dreams is a powerful and benevolent figure who lives and rules over the Mountain of Sweet Dreams, located in the Kingdom of Fairies."@en ;
+                rdfs:label "Lady of Dreams"@en .
+
+
+###  http://example.org/stilton#LightBright
+:LightBright rdf:type owl:NamedIndividual ,
+                      :Dragon ;
+             rdfs:comment "Lightbright, also nicknamed \"The Dragon of Fortune\", is Mel's loyal assistant and advisor. It is said that Lightbright has scales made of pure starlight and has immense strength. It is also said that his breath weapon is consisted of pure magic light energy , which could be a powerful ray of fire. He can only be seen at night. The dragon vanishes at the first rays of the sun, because he feeds off starlight and needs it to survive. Every night he returns again."@en ;
+             rdfs:label "LightBright"@en ,
+                        "The Dragon of Fortune"@en .
+
+
+###  http://example.org/stilton#Mel
+:Mel rdf:type owl:NamedIndividual ,
+              :Character ;
+     :memberOfGroup :The_Secret_Alliance ;
+     rdfs:comment "Mel, commonly known as the Great Wizard of Light, is a wise and kind figure in the Kingdom of Fantasy."@en ;
+     rdfs:label "Mel the Magnificent"@en .
+
+
+###  http://example.org/stilton#Owlivia
+:Owlivia rdf:type owl:NamedIndividual ,
+                  :Character ;
+         rdfs:label "Owlivia"@en .
+
+
+###  http://example.org/stilton#PetuniaPrettyPaws
+:PetuniaPrettyPaws rdf:type owl:NamedIndividual ,
+                            :Character ;
+                   rdfs:comment "Petunia Pretty Paws is a friend of Geronimo Stilton. She is known for her charm, intelligence, and investigative skills."@en ;
+                   rdfs:label "Petunia Pretty Paws"@en .
+
+
+###  http://example.org/stilton#ProfessorPawsVonVolt
+:ProfessorPawsVonVolt rdf:type owl:NamedIndividual ,
+                               :Character ;
+                      rdfs:comment "Professor Paws von Volt is a scientist and inventor. He is a friend of Geronimo and often helps with technological gadgets and discoveries."@en ;
+                      rdfs:label "Professor Paws von Volt"@en .
+
+
+###  http://example.org/stilton#RodentsGazette
+:RodentsGazette rdf:type owl:NamedIndividual ,
+                         schema:Organization ;
+                schema:employee :geronimoStilton ,
+                                :theaStilton ;
+                rdfs:label "The Rodents Gazette"@en .
+
+
+###  http://example.org/stilton#Roxy_Foxy
+:Roxy_Foxy rdf:type owl:NamedIndividual ,
+                    :Character ;
+           rdfs:label "Roxy Foxy"@en .
+
+
+###  http://example.org/stilton#Scribblehopper
+:Scribblehopper rdf:type owl:NamedIndividual ,
+                         :Character ;
+                rdfs:label "Scribblehopper"@en .
+
+
+###  http://example.org/stilton#The_Kingdom_of_Fantasy
+:The_Kingdom_of_Fantasy rdf:type owl:NamedIndividual ,
+                                 schema:Place ;
+                        rdfs:label "The Kingdom of Fantasy"@en .
+
+
+###  http://example.org/stilton#The_Secret_Alliance
+:The_Secret_Alliance rdf:type owl:NamedIndividual ,
+                              :Group ;
+                     :hasMember :Blossom ,
+                                :Clever ,
+                                :Lady_of_Dreams ,
+                                :Mel ;
+                     rdfs:label "The Secret Alliance"@en .
+
+
+###  http://example.org/stilton#Wither
+:Wither rdf:type owl:NamedIndividual ,
+                 :Character ;
+        rdfs:comment "Queen Wither is the current leader of the Kingdom of Witches and the queen of the Dark Fairies. She's the twin sister of Blossom of the Light Fairies. It said that a Scarlet Skull Butterfly sent by Cackle stung Wither and she became evil from the dark butterfly's venom's influence."@en ;
+        rdfs:label "Wither"@en .
+
+
+###  http://example.org/stilton#Wolfy
+:Wolfy rdf:type owl:NamedIndividual ,
+                :Character ;
+       rdfs:label "Wolfy"@en .
+
+
+###  http://example.org/stilton#benjaminStilton
+:benjaminStilton rdf:type owl:NamedIndividual ,
+                          :Character ;
+                 :hasAunt :theaStilton ;
+                 :hasUncle :geronimoStilton ;
+                 schema:homeLocation :newMouseCity ;
+                 schema:jobTitle "Student" ;
+                 rdfs:comment "Benjamin Stilton is Geronimo's young nephew and often accompanies him on his adventures. He is a student and very intelligent for his age."@en ;
+                 rdfs:label "Benjamin Stilton"@en .
+
+
+###  http://example.org/stilton#geronimoStilton
+:geronimoStilton rdf:type owl:NamedIndividual ,
+                          :Character ;
+                 :hasAunt :sweetfur ;
+                 :hasCousin :trapStilton ;
+                 :hasFriend :HerculePoirat ,
+                            :PetuniaPrettyPaws ,
+                            :ProfessorPawsVonVolt ;
+                 :hasGrandParent :williamShortpaws ;
+                 :hasNephew :benjaminStilton ;
+                 :hasSibling :theaStilton ;
+                 schema:homeLocation :newMouseCity ;
+                 schema:worksFor :RodentsGazette ;
+                 <http://www.w3.org/2004/02/skos/core#altLabel> "Gerry Berry" ;
+                 schema:jobTitle "Journalist" ;
+                 rdfs:comment "Geronimo Stilton is the protagonist of the series. He is a journalist and editor for The Rodent's Gazette, and often finds himself in adventurous situations."@en ;
+                 rdfs:label "Geronimo Stilton"@en .
+
+
+###  http://example.org/stilton#newMouseCity
+:newMouseCity rdf:type owl:NamedIndividual ,
+                       schema:Place ;
+              rdfs:label "New Mouse City" .
+
+
+###  http://example.org/stilton#sweetfur
+:sweetfur rdf:type owl:NamedIndividual ,
+                   :Character ;
+          :hasNephew :geronimoStilton ,
+                     :trapStilton ;
+          :hasNiece :theaStilton ;
+          rdfs:comment "Sweetfur is the aunt of Geronimo, Thea, and Trap Stilton. She is a nurturing and supportive elder figure in the Stilton family."@en ;
+          rdfs:label "Sweetfur"@en .
+
+
+###  http://example.org/stilton#theaStilton
+:theaStilton rdf:type owl:NamedIndividual ,
+                      :Character ;
+             :hasAunt :sweetfur ;
+             :hasCousin :trapStilton ;
+             :hasGrandParent :williamShortpaws ;
+             :hasNephew :benjaminStilton ;
+             :hasSibling :geronimoStilton ;
+             schema:homeLocation :newMouseCity ;
+             schema:worksFor :RodentsGazette ;
+             schema:jobTitle "Journalist" ,
+                             "Nature Photographer" ;
+             rdfs:comment "Thea Stilton is Geronimo's sister. She is a journalist and a nature photographer known for her bravery and curiosity."@en ;
+             rdfs:label "Thea Stilton"@en .
+
+
+###  http://example.org/stilton#trapStilton
+:trapStilton rdf:type owl:NamedIndividual ,
+                      :Character ;
+             :hasAunt :sweetfur ;
+             :hasCousin :geronimoStilton ,
+                        :theaStilton ;
+             :hasGrandParent :williamShortpaws ;
+             schema:homeLocation :newMouseCity ;
+             schema:jobTitle "Shop owner" ;
+             rdfs:comment "Trap Stilton is Geronimo's cousin. He runs a shop and is known for his mischievous personality and love for pranks."@en ;
+             rdfs:label "Trap Stilton"@en .
+
+
+###  http://example.org/stilton#williamShortpaws
+:williamShortpaws rdf:type owl:NamedIndividual ,
+                           :Character ;
+                  schema:homeLocation :newMouseCity ;
+                  rdfs:comment "William Shortpaws is the grandfather of the Stilton siblings. He is a respected elder and a key figure in the family lineage."@en ;
+                  rdfs:label "William Shortpaws"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
